@@ -22,58 +22,140 @@ const noticiasParalelas = [
 ]
 
 const ultimasNoticias = [
+
     {
-        imagem: "img/tomholland.jpg",
+        imagem: "imgs/fimdasbets.png",
+        categoria: "Política",
+        manchete: "Fim das bets! Governo Lula anuncia a proibição das casas de apostas no Brasil.",
+        autor: "Iris Felina",
+        data: "26 set",
+        tempo: "13 min"
+    },
+
+    {
+        imagem: "imgs/studioghibli.jpg",
+        categoria: "Opinião",
+        manchete: "Studio Ghibli: 10 filmes que mostram por que o estúdio se tornou tão especial",
+        autor: "Evelin Santos",
+        data: "26 set",
+        tempo: "08 min"
+    },
+
+    {
+        imagem: "imgs/videogame.jpg",
+        categoria: "Tecnologia",
+        manchete: "GTA VI: o que esperar do lançamento mais aguardado da Rockstar",
+        autor: "Jackson Menezes",
+        data: "25 set",
+        tempo: "03 min"
+    },
+
+    {
+        imagem: "imgs/diarioapotecaria.jpg",
+        categoria: "Cultura",
+        manchete: "Maomao está de volta, lança terceira temporada de 'Diário de uma Apotecária'",
+        autor: "Gabriel Carvalho",
+        data: "25 set",
+        tempo: "10 min"
+    },
+
+    {
+        imagem: "imgs/gatosilvestre.jpg",
+        categoria: "Ciências",
+        manchete: "Nova espécie de felino descoberta, gato-pato do Chile",
+        autor: "Eduardo Miranda",
+        data: "25 set",
+        tempo: "06 min"
+    },
+
+    {
+        imagem: "imgs/dadosnainternet.jpg",
+        categoria: "Tecnologia",
+        manchete: "Pequenos descuidos podem deixar seus dados mais vulneráveis na internet",
+        autor: "Monica Geller",
+        data: "24 set",
+        tempo: "11 min"
+    },
+
+    {
+        imagem: "imgs/sharething.jpg",
+        categoria: "Opinião",
+        manchete: "Sharenting: quando compartilhar a infância dos filhos passa dos limites",
+        autor: "Nico Canino",
+        data: "24 set",
+        tempo: "09 min"
+    },
+
+    {
+        imagem: "imgs/gravidasfgts.jpg",
+        categoria: "Política",
+        manchete: "Projeto de Erika Hilton propõe uso do FGTS para reprodução assistida",
+        autor: "Alice Miranda",
+        data: "24 set",
+        tempo: "06 min"
+    },
+
+    {
+        imagem: "imgs/FeitoPipa.png",
+        categoria: "Cultura",
+        manchete: "Feito Pipa será o filme que representará o Brasil no Oscar 2027",
+        autor: "Alice Miranda",
+        data: "23 set",
+        tempo: "05 min"
+    },
+
+    {
+        imagem: "imgs/vacina.jpg",
+        categoria: "ciências",
+        manchete: "Vacinação contra o sarampo é reforçada após novos casos registrados",
+        autor: "Mila Felina",
+        data: "23 set",
+        tempo: "08 min"
+    },
+
+    {
+        imagem: "imgs/urnaeletronica.png",
+        categoria: "Política",
+        manchete: "Primeiro voto? O que fazer no dia da votação",
+        autor: "Valente Felis",
+        data: "22 set",
+        tempo: "07 min"
+    },
+    
+    {
+        imagem: "imgs/tomhollandluto.png",
         categoria: "Cultura",
         manchete: "morre o ator Tom Holland, aos 30 anos de idade",
         autor: "Breno Santana",
         data: "21 set",
-        tempo: "5 min"
+        tempo: "05 min"
     },
-
+    
     {
-        imagem: "img/relampagomcqueen.jpg",
+        imagem: "imgs/pennydreadful.jpg",
+        categoria: "Opinião",
+        manchete: "Penny Dreadful: a terceira temporada deveria ser melhor?",
+        autor: "Clarice Miranda",
+        data: "21 set",
+        tempo: "04 min"
+    },
+    
+    {
+        imagem: "imgs/ia.jpg",
+        categoria: "Tecnologia",
+        manchete: "Inteligência artificial passa por novos testes e amplia suas possibilidades",
+        autor: "Charles Garcia",
+        data: "20 set",
+        tempo: "03 min"
+    },
+    
+    {
+        imagem: "imgs/relampagomcqueen.jpg",
         categoria: "Ciência",
         manchete: "Relâmpago Mcqueen descobre um novo combústivel.",
         autor: "Matheus Feitosa",
         data: "19 set",
-        tempo: "8 min"
-    },
-
-    {
-        imagem: "",
-        categoria: "",
-        manchete: "",
-        autor: "",
-        data: "",
-        tempo: ""
-    },
-
-    {
-        imagem: "i",
-        categoria: "",
-        manchete: "",
-        autor: "",
-        data: "",
-        tempo: ""
-    },
-
-    {
-        imagem: "i",
-        categoria: "",
-        manchete: "",
-        autor: "",
-        data: "",
-        tempo: ""
-    },
-
-    {
-        imagem: "i",
-        categoria: "",
-        manchete: "",
-        autor: "",
-        data: "",
-        tempo: ""
+        tempo: "08 min"
     },
 
     {
@@ -81,9 +163,9 @@ const ultimasNoticias = [
         categoria: "Cultura",
         manchete: "Descubra: Gojo está vivo e morando no Grajaú",
         autor: "Joyce Gomes",
-        data: "01 agosto",
-        tempo: "4 min"
-    },
+        data: "18 set",
+        tempo: "04 min"
+    }
 ]
 
 function criarNoticiasPararelas() {
@@ -106,4 +188,60 @@ function criarNoticiasPararelas() {
     }    
 }
 
+function criarUltimasNoticias() {
+
+    for(const ultimaNoticia of ultimasNoticias) {
+
+        const cardNot = document.getElementById("grid-UL-noticias");
+        cardNot.innerHTML += ` 
+        <aside class="ultima-noticia-info">
+
+            <img class="img-ultima-noticia" src="${ultimaNoticia.imagem}">
+
+            <span class="categoria ${ultimaNoticia.categoria.toLowerCase()}">
+                ${ultimaNoticia.categoria}
+            </span>
+
+            <h2 class="manchete">${ultimaNoticia.manchete}</h2>
+
+            <div class="informacoes">
+                <span class="autor">${ultimaNoticia.autor} •</span>
+                <span class="data">${ultimaNoticia.data} •</span>
+                <span class="tempo">${ultimaNoticia.tempo}</span>
+            </div>
+
+        </aside>
+    `;
+    }    
+}
+
+function dataHora() {
+
+    var dataAoVivo = new Date;
+
+    var dataAgora = document.querySelector(".data-hora");
+
+    var data = dataAoVivo.toLocaleDateString("pt-BR", {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    });
+
+    var hora = dataAoVivo.toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    var formato = data + " • " + hora;
+
+    dataAgora.textContent = formato;
+
+}
+
 criarNoticiasPararelas();
+
+criarUltimasNoticias();
+
+dataHora();
+setInterval(dataHora, 1000);

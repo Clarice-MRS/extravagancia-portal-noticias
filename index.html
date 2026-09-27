@@ -10,20 +10,26 @@
 </head>
 <body>
 
-    <div class="info-topo">
-        <p>AO VIVO</p>
-        <span class="data-hora">escopo da data</span>
-        <button id="modo-escuro">escuro</button>
+    <div class="barra-superior">
+        <div id="datahora">
+            <span class="bolinhaAoVivo"></span>
+            <p>AO VIVO</p>
+            <span class="data-hora"></span>
+        </div>
+
+        <div id="botao-modo-escuro">
+            <button id="modo-escuro"><i class="bi bi-moon-stars-fill"></i> escuro</button>
+        </div>
     </div>
 
-    <header>
+    <header class="masthead">
         <h1><span>Extravagância</span></h1>
         <nav>
             <ul>
                 <li><a href="">Ciência</a></li>
                 <li><a href="">Cultura</a></li>
-                <li><a href="">Negócios</a></li>
                 <li><a href="">Opinião</a></li>
+                <li><a href="">Política</a></li>
                 <li><a href="">Tecnologia</a></li>
             </ul>
         </nav>
@@ -36,22 +42,24 @@
 
     <main>
 
-        <section class="bloco-um">
+        <section class="hero">
             <article class="noticia-principal">
-                <img class="imagem-noticia" src="imgs/ladygagarosas.webp">
+                <img class="imagem-noticia" src="imgs/ladygagarosas.webp" alt="Lady Gaga em um vestido preto bufante com rosas de decoração">
                 <span id="noticia-categoria">Cultura</span>
                 <h2>MOTHER! Lady Gaga entra no mundo da biotecnologia com a Outer Bio</h2>
                 <p>Fundada por Michael Polansky, noivo de Lady Gaga, a Outer Bio investe em pesquisas científicas voltadas à saúde da pele e utiliza amostras de tecido humano em seus estudos.</p>
-                <span>Por: <strong>Íris Felina</strong> 21 set 2026 · 10 min de leitura</span>
-                <button>Ler Matéria Completa</button>
+                <span>Por: <strong>Íris Felina</strong> • 21 set 2026 • 10 min de leitura</span>
+                <div class="botao-lermais">
+                    <button id="lermais">Ler Matéria Completa</button>
+                </div>
             </article>
 
-            <div id="grid-not-paralela">
+            <aside id="grid-not-paralela">
 
-            </div>
+            </aside>
         </section>
 
-        <section class="bloco-dois">
+        <section class="ultimas-noticias">
             <h2>Mais Notícias</h2>
             <div id="grid-UL-noticias">
 
@@ -61,7 +69,7 @@
 
         <section class="bloco-final">
             <div class="form-newsletter">
-                <h3>Seja Extravagante!</h3>
+                <h2>Seja Extravagante!</h2>
                 <p>Assine nossa newsletter e extravaze! Principais notícias às Terças-feiras.</p>
                 <form>
                     <input type="email" id="email" placeholder="digite seu email" required>

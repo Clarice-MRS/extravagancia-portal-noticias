@@ -16,7 +16,7 @@
     --signal: #E5372A;
 
     --tecnologia: #2F6BEB;
-    --negócios: #C07A12;
+    --politica: #C07A12;
     --ciência: #0F8C7E;
     --cultura: #B8348F;
     --opinião: #5A6472;
@@ -61,18 +61,29 @@ button:hover {
     background-color: var(--paper);
 }
 
-.hero button {
+.hero button{
     width: 50%;
     color: var(--line);
     background-color: var(--cultura);
     border: none;
 }
 
-.form-newsletter button {
+#newsletter button {
     color: var(--line);
     font-size: 13px;
     background-color: #d88b06;
     border: none;
+}
+
+.filtrar-noticias button {
+    color: var(--ink);
+    font-family: var(--fontePadrao);
+    border: none;
+}
+
+.filtrar-noticias button:hover {
+    background-color: #183c62;
+    color: var(--paper);
 }
 
 /**************************
@@ -227,7 +238,7 @@ button:hover {
     width: 70%;
     border-radius: 20px;
     margin: 0 auto;
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
     gap: 0;
     padding: 2rem;
     background-color: var(--paper);
@@ -301,40 +312,121 @@ button:hover {
     ULTIMAS NOTICIAS 
 ***********************/
 
-.ultimas-noticias {
+#ultimas-noticias {
     align-items: center;
     justify-items: center;
     width: 70%;
     border-radius: 20px;
     margin: 0 auto;
     gap: 0;
-    padding: 1rem;
+    padding: 2rem;
     background-color: var(--paper);
+    overflow: hidden;
+    margin-bottom: 2rem;
 }
 
+.topo-ultimas-noticias {
+    padding-right: 5rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filtrar-noticias {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.topo-ultimas-noticias h2 {
+    margin-left: 4rem;
+    padding: 4px;
+    font-family: var(--fonteTitulo);
+    border-bottom: solid 2px #183c62;
+    border-top: solid 2px #183c62;
+}
+
+
 #grid-UL-noticias {
+    max-height: 400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 1rem;
-    gap: 1rem;
+    gap: 2rem;
+    overflow-y: auto;
 }
 
 .ultima-noticia-info {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    width: 100%;
+    height: 330px;
     font-family: var(--fontePadrao);
 }
 
-.ultima-noticia-info h2 {
+.ultima-noticia-info .manchete {
     font-family: var(--fonteTitulo);
+    line-height: 1.2;
+    min-height: calc(1.2em * 3);
+    margin-top: 0.5rem;
+    font-size: 18px;
+}
+
+.ultima-noticia-info .informacoes {
+    color: var(--slate);
+    font-size: 14px;
 }
 
 .img-ultima-noticia {
-    width: 300px;
+    width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.categoriaciência {
+    background-color: var(--ciência);
+    border-radius: 5px;
+    color: var(--paper);
+    padding-left: 0.5rem;
+    text-transform: uppercase;
+}
+
+.categoriacultura {
+    background-color: var(--cultura);
+    border-radius: 5px;
+    color: var(--paper);
+    padding-left: 0.5rem;
+    text-transform: uppercase;
+}
+
+.categoriaopinião {
+    background-color: var(--opinião);
+    border-radius: 5px;
+    color: var(--paper);
+    padding-left: 0.5rem;
+    text-transform: uppercase;
+}
+
+.categoriapolítica {
+    background-color: var(--politica);
+    border-radius: 5px;
+    color: var(--paper);
+    padding-left: 0.5rem;
+    text-transform: uppercase;
+}
+
+.categoriatecnologia {
+    background-color: var(--tecnologia);
+    border-radius: 5px;
+    color: var(--paper);
+    padding-left: 0.5rem;
+    text-transform: uppercase;
+    font-size: 15px;
 }
 
 /********************
@@ -351,7 +443,7 @@ button:hover {
 
 /* NEWSLETTER */
 
-.form-newsletter {
+#newsletter {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -362,18 +454,18 @@ button:hover {
     gap: 1rem;
 }
 
-.form-newsletter h2 {
+#newsletter h2 {
     font-size: 30px;
     color: var(--line);
-    font-family: var(--fontePadrao); 
+    font-family: var(--fonteTitulo); 
 }
 
-.form-newsletter p {
+#newsletter p {
     color: var(--line);
     font-family: var(--fontePadrao);
 }
 
-.form-newsletter input {
+#newsletter input {
     width: 40vh;
     background-color: var(--mist);
     font-family: var(--fontePadrao);
@@ -383,8 +475,32 @@ button:hover {
     margin: 0 1rem;
 }
 
-.form-newsletter input:focus {
+#newsletter input:focus {
   outline-color: #d88b06;
+}
+
+.mensagem-confirmacao {
+    color: var(--line);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: #d88b06;
+}
+
+.mensagem-confirmacao strong {
+    font-size: 20px;
+    color: var(--line);
+    font-family: var(--fonteTitulo);
+    padding: 0.5rem;
+}
+
+.mensagem-confirmacao img {
+    padding: 0.5rem;
+    border-radius: 15px;
+    width: 200px;
+    height: 100%;
 }
 
 /********************

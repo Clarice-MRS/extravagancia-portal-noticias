@@ -61,7 +61,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/gatosilvestre.jpg",
-        categoria: "Ciências",
+        categoria: "Ciência",
         manchete: "Nova espécie de felino descoberta, gato-pato do Chile",
         autor: "Eduardo Miranda",
         data: "25 set",
@@ -106,7 +106,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/vacina.jpg",
-        categoria: "ciências",
+        categoria: "Ciência",
         manchete: "Vacinação contra o sarampo é reforçada após novos casos registrados",
         autor: "Mila Felina",
         data: "23 set",
@@ -188,9 +188,34 @@ function criarNoticiasPararelas() {
     }    
 }
 
-function criarUltimasNoticias() {
+/********************************
+    CONFIGURAÇÃO DOS EVENTOS
+********************************/
 
-    for(const ultimaNoticia of ultimasNoticias) {
+const botaoCiencia = document.getElementById("filtrar-ciencia");
+const botaoCultura = document.getElementById("filtrar-cultura");
+const botaoOpiniao = document.getElementById("filtrar-opiniao");
+const botaoPolitica = document.getElementById("filtrar-politica");
+const botaoTecnologia = document.getElementById("filtrar-tecnologia");
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    botaoCiencia.addEventListener("click", function() {
+        const resultado = filtrarCiencias();
+
+        console.log(resultado);
+
+        const cardNot = document.getElementById("grid-UL-noticias");
+
+        cardNot.innerHTML = "";
+
+        criarUltimasNoticias(resultado);
+    });
+});
+
+function criarUltimasNoticias(noticias) {
+
+    for(const ultimaNoticia of noticias) {
 
         const cardNot = document.getElementById("grid-UL-noticias");
         cardNot.innerHTML += ` 
@@ -198,7 +223,7 @@ function criarUltimasNoticias() {
 
             <img class="img-ultima-noticia" src="${ultimaNoticia.imagem}">
 
-            <span class="categoria ${ultimaNoticia.categoria.toLowerCase()}">
+            <span class="categoria${ultimaNoticia.categoria.toLowerCase()}">
                 ${ultimaNoticia.categoria}
             </span>
 
@@ -212,11 +237,33 @@ function criarUltimasNoticias() {
 
         </aside>
     `;
-    }    
+}    
+}
+
+const formulario = document.getElementById("form-newsletter");
+const mensagem = document.getElementById("mensagem-newsletter");
+            
+    if (formulario && mensagem) {
+            
+        formulario.addEventListener("submit", function(event) {
+            
+            event.preventDefault();
+            
+            mensagem.innerHTML = `
+            <div class="mensagem-confirmacao">
+                <strong>Assinatura confirmada. Que extravagância!</strong>
+                <p>Prepare sua caixa de entrada: as notícias mais interessantes estão a caminho.</p>
+                <p>Porque informação básica nunca foi a nossa praia.</p>
+                <img src="imgs/aplausos.gif">
+            </div>
+            `;
+            
+            formulario.reset();
+    });
 }
 
 function dataHora() {
-
+    
     var dataAoVivo = new Date;
 
     var dataAgora = document.querySelector(".data-hora");
@@ -239,9 +286,25 @@ function dataHora() {
 
 }
 
+
+const noticiasCiencia = [];
+
+function filtrarCiencias() {
+    for (const ultimaNoticia of ultimasNoticias) { 
+        if (ultimaNoticia.categoria === "Ciência") {
+            noticiasCiencia.push(ultimaNoticia);   
+        }
+
+    }
+
+    return noticiasCiencia; 
+}
+
+
+
 criarNoticiasPararelas();
 
-criarUltimasNoticias();
+criarUltimasNoticias(ultimasNoticias);
 
 dataHora();
 setInterval(dataHora, 1000);

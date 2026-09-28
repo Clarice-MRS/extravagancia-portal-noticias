@@ -26,11 +26,11 @@
         <h1><span>Extravagância</span></h1>
         <nav>
             <ul>
-                <li><a href="">Ciência</a></li>
-                <li><a href="">Cultura</a></li>
-                <li><a href="">Opinião</a></li>
-                <li><a href="">Política</a></li>
-                <li><a href="">Tecnologia</a></li>
+                <li><a href="#ultimas-noticias">Ciência</a></li>
+                <li><a href="#ultimas-noticias">Cultura</a></li>
+                <li><a href="#ultimas-noticias">Opinião</a></li>
+                <li><a href="#ultimas-noticias">Política</a></li>
+                <li><a href="#ultimas-noticias">Tecnologia</a></li>
             </ul>
         </nav>
 
@@ -59,22 +59,32 @@
             </aside>
         </section>
 
-        <section class="ultimas-noticias">
-            <h2>Mais Notícias</h2>
+        <section id="ultimas-noticias">
+            <div class="topo-ultimas-noticias">
+                <h2>Mais Notícias</h2>
+                <div class="filtrar-noticias">
+                    <button type="button" id="filtrar-ciencia">Ciência</button>
+                    <button type="button" id="filtrar-cultura">Cultura</button>
+                    <button type="button" id="filtrar-opiniao">Opinião</button>
+                    <button type="button" id="filtrar-politica">Política</button>
+                    <button type="button" id="filtrar-tecnologia">Tecnologia</button>
+                </div>
+            </div>
+
             <div id="grid-UL-noticias">
 
             </div>
-            <button>Ver Mais</button>
         </section>
 
         <section class="bloco-final">
-            <div class="form-newsletter">
+            <div id="newsletter">
                 <h2>Seja Extravagante!</h2>
                 <p>Assine nossa newsletter e extravaze! Principais notícias às Terças-feiras.</p>
-                <form>
+                <form id="form-newsletter">
                     <input type="email" id="email" placeholder="digite seu email" required>
                     <button type="submit">enviar</button>
                 </form>
+                <div id="mensagem-newsletter"></div>
             </div>
         </section>
             

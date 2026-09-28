@@ -1,3 +1,7 @@
+/************************
+    ARRAY DE NOTÍCIAS 
+************************/
+
 const noticiasParalelas = [
     {
         id: "1",
@@ -168,6 +172,157 @@ const ultimasNoticias = [
     }
 ]
 
+/********************************
+    CONFIGURAÇÃO DOS EVENTOS
+********************************/
+
+const botoesFiltro = document.querySelectorAll(".filtrar-noticias button");
+const botaoTodas = document.getElementById("filtrar-todas");
+const linksCategorias = document.querySelectorAll("nav a");
+const campoBusca = document.querySelector(".buscar-noticia input");
+const resultadosBusca = document.getElementById("resultados-busca");
+const formulario = document.getElementById("form-newsletter");
+const mensagem = document.getElementById("mensagem-newsletter");
+
+    /****FILTRAGEM DE NOTÍCIAS****/
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    botoesFiltro.forEach(function(botao) {
+
+        botao.addEventListener("click", function() {
+            const resultado = filtrarNoticias(botao.textContent);
+
+            console.log(resultado);
+
+            const cardNot = document.getElementById("grid-UL-noticias");
+
+            cardNot.innerHTML = "";
+
+            criarUltimasNoticias(resultado);
+        });
+
+    });
+
+
+    botaoTodas.addEventListener("click", function() {
+
+        const cardNot = document.getElementById("grid-UL-noticias");
+
+        cardNot.innerHTML = "";
+
+        criarUltimasNoticias(ultimasNoticias);
+
+    });
+
+
+    linksCategorias.forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            const resultado = filtrarNoticias(link.textContent);
+
+            console.log(resultado);
+
+            const cardNot = document.getElementById("grid-UL-noticias");
+
+            cardNot.innerHTML = "";
+
+            criarUltimasNoticias(resultado);
+
+        });
+
+    });
+
+    /****BUSCAR****/
+
+   campoBusca.addEventListener("input", function() {
+
+    const resultado = buscarNoticias(campoBusca.value);
+
+        if (campoBusca.value.length === 0) {
+            resultadosBusca.innerHTML = "";
+            resultadosBusca.style.display = "none";
+            return;
+        }
+
+        if (resultado.length === 0) {
+            resultadosBusca.innerHTML = `
+                <div class="busca-invalida">
+                    <p>Sem resultados...</p>
+                    <img src="imgs/semresultados.gif">
+                </div>
+            `;
+
+            resultadosBusca.style.display = "block";
+
+        } else {
+
+            resultadosBusca.innerHTML = "";
+
+            for (const noticia of resultado) {
+
+                resultadosBusca.innerHTML += `  
+                <aside class="busca-sucedida">
+
+                    <img class="img-noticia" src="${noticia.imagem}">
+
+                    <span class="categoria${noticia.categoria.toLowerCase()}">
+                        ${noticia.categoria}
+                    </span>
+
+                    <h2 class="manchete">${noticia.manchete}</h2>
+
+                    <div class="informacoes">
+                        <span class="autor">${noticia.autor} •</span>
+                        <span class="data">${noticia.data} •</span>
+                        <span class="tempo">${noticia.tempo}</span>
+                    </div>
+
+                </aside>
+                `;
+            }
+
+            resultadosBusca.style.display = "block";
+
+        }
+
+    });
+
+    /****MODO ESCURO****/
+
+    const trocaTema = document.getElementById("botao-modo-escuro");
+
+    const ativarModoEscuro = () => {
+        document.body.classList.add("modo-escuro");
+    };
+
+    const desativarModoEscuro = () => {
+        document.body.classList.remove("modo-escuro");
+    };
+
+    trocaTema.addEventListener("click", () => {
+        if (document.body.classList.contains("modo-escuro")) {
+            desativarModoEscuro();
+            localStorage.setItem("modo-escuro", "inactive");
+            trocaTema.innerHTML = '<i class="bi bi-moon-stars-fill"></i> escuro';
+        } else {
+            ativarModoEscuro();
+            localStorage.setItem("modo-escuro", "active");
+            trocaTema.innerHTML = '<i class="bi bi-sun-fill"></i> claro';
+        }
+    });
+
+    if (localStorage.getItem("modo-escuro") === "active") {
+        ativarModoEscuro();
+    }
+
+});
+
+/****************************
+    CRIAR NOTÍCIAS
+****************************/
+
 function criarNoticiasPararelas() {
 
     for(const noticiaPararela of noticiasParalelas) {
@@ -187,31 +342,6 @@ function criarNoticiasPararelas() {
     `;
     }    
 }
-
-/********************************
-    CONFIGURAÇÃO DOS EVENTOS
-********************************/
-
-const botaoCiencia = document.getElementById("filtrar-ciencia");
-const botaoCultura = document.getElementById("filtrar-cultura");
-const botaoOpiniao = document.getElementById("filtrar-opiniao");
-const botaoPolitica = document.getElementById("filtrar-politica");
-const botaoTecnologia = document.getElementById("filtrar-tecnologia");
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    botaoCiencia.addEventListener("click", function() {
-        const resultado = filtrarCiencias();
-
-        console.log(resultado);
-
-        const cardNot = document.getElementById("grid-UL-noticias");
-
-        cardNot.innerHTML = "";
-
-        criarUltimasNoticias(resultado);
-    });
-});
 
 function criarUltimasNoticias(noticias) {
 
@@ -239,28 +369,71 @@ function criarUltimasNoticias(noticias) {
     `;
 }    
 }
+          
+/****************************
+    FILTRAR NOTÍCIAS
+****************************/
 
-const formulario = document.getElementById("form-newsletter");
-const mensagem = document.getElementById("mensagem-newsletter");
-            
-    if (formulario && mensagem) {
-            
-        formulario.addEventListener("submit", function(event) {
-            
-            event.preventDefault();
-            
-            mensagem.innerHTML = `
-            <div class="mensagem-confirmacao">
-                <strong>Assinatura confirmada. Que extravagância!</strong>
-                <p>Prepare sua caixa de entrada: as notícias mais interessantes estão a caminho.</p>
-                <p>Porque informação básica nunca foi a nossa praia.</p>
-                <img src="imgs/aplausos.gif">
-            </div>
-            `;
-            
-            formulario.reset();
-    });
+function filtrarNoticias(categoria) {
+
+    const noticiasFiltradas = [];
+
+    for (const ultimaNoticia of ultimasNoticias) { 
+        if (ultimaNoticia.categoria === categoria) {
+            noticiasFiltradas.push(ultimaNoticia);   
+        }
+
+    }
+
+    return noticiasFiltradas; 
 }
+
+/****************************
+   BUSCAR NOTÍCIAS
+****************************/
+
+function buscarNoticias(termo) { 
+    const resultadosEncontrados = []; 
+
+    for (const ultimaNoticia of ultimasNoticias) { 
+        if (
+            ultimaNoticia.categoria.toLowerCase().includes(termo.toLowerCase()) ||
+            ultimaNoticia.manchete.toLowerCase().includes(termo.toLowerCase()) ||
+            ultimaNoticia.autor.toLowerCase().includes(termo.toLowerCase())
+        ) {
+            resultadosEncontrados.push(ultimaNoticia);
+        }
+    }
+
+    return resultadosEncontrados;
+}
+
+/****************************
+    NEWSLETTER - MENSAGEM
+****************************/
+
+if (formulario && mensagem) {
+        
+    formulario.addEventListener("submit", function(event) {
+        
+        event.preventDefault();
+        
+        mensagem.innerHTML = `
+        <div class="mensagem-confirmacao">
+            <strong>Assinatura confirmada. Que extravagância!</strong>
+            <p>Prepare sua caixa de entrada: as notícias mais interessantes estão a caminho.</p>
+            <p>Porque informação básica nunca foi a nossa praia.</p>
+            <img src="imgs/aplausos.gif">
+        </div>
+        `;
+        
+        formulario.reset();
+});
+}
+
+/********************
+    DATA E HORA 
+********************/
 
 function dataHora() {
     
@@ -286,25 +459,13 @@ function dataHora() {
 
 }
 
+dataHora();
+setInterval(dataHora, 1000);
 
-const noticiasCiencia = [];
-
-function filtrarCiencias() {
-    for (const ultimaNoticia of ultimasNoticias) { 
-        if (ultimaNoticia.categoria === "Ciência") {
-            noticiasCiencia.push(ultimaNoticia);   
-        }
-
-    }
-
-    return noticiasCiencia; 
-}
-
-
+/*************************
+    CHAMANDO FUNÇÕES 
+*************************/
 
 criarNoticiasPararelas();
 
 criarUltimasNoticias(ultimasNoticias);
-
-dataHora();
-setInterval(dataHora, 1000);

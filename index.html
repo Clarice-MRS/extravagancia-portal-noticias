@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader&family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Extravagância</title>
 </head>
-<body>
+<body id="body">
 
     <div class="barra-superior">
         <div id="datahora">
@@ -17,9 +18,9 @@
             <span class="data-hora"></span>
         </div>
 
-        <div id="botao-modo-escuro">
-            <button id="modo-escuro"><i class="bi bi-moon-stars-fill"></i> escuro</button>
-        </div>
+        <button id="botao-modo-escuro" type="button">
+            <i class="bi bi-moon-stars-fill"></i> escuro
+        </button>
     </div>
 
     <header class="masthead">
@@ -37,6 +38,12 @@
         <div class="buscar-noticia">
             <i class="bi bi-search"></i>
             <input type="search" placeholder="Buscar">
+
+            <div id="resultados-busca">
+                <div id="grid-resultados-busca">
+                    
+                </div>
+            </div>
         </div>
     </header>
 
@@ -48,7 +55,7 @@
                 <span id="noticia-categoria">Cultura</span>
                 <h2>MOTHER! Lady Gaga entra no mundo da biotecnologia com a Outer Bio</h2>
                 <p>Fundada por Michael Polansky, noivo de Lady Gaga, a Outer Bio investe em pesquisas científicas voltadas à saúde da pele e utiliza amostras de tecido humano em seus estudos.</p>
-                <span>Por: <strong>Íris Felina</strong> • 21 set 2026 • 10 min de leitura</span>
+                <span id="dados-noticia-principal">Por: <strong>Íris Felina</strong> • 21 set 2026 • 10 min de leitura</span>
                 <div class="botao-lermais">
                     <button id="lermais">Ler Matéria Completa</button>
                 </div>
@@ -63,11 +70,12 @@
             <div class="topo-ultimas-noticias">
                 <h2>Mais Notícias</h2>
                 <div class="filtrar-noticias">
-                    <button type="button" id="filtrar-ciencia">Ciência</button>
-                    <button type="button" id="filtrar-cultura">Cultura</button>
-                    <button type="button" id="filtrar-opiniao">Opinião</button>
-                    <button type="button" id="filtrar-politica">Política</button>
-                    <button type="button" id="filtrar-tecnologia">Tecnologia</button>
+                    <button type="button">Ciência</button>
+                    <button type="button">Cultura</button>
+                    <button type="button">Opinião</button>
+                    <button type="button">Política</button>
+                    <button type="button">Tecnologia</button>
+                    <button type="button" id="filtrar-todas">Todas</button>
                 </div>
             </div>
 
@@ -98,6 +106,5 @@
         </ul>
         <p>&copy; 2026 Extravagância - Portal de Notícias</p>
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>

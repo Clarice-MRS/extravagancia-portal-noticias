@@ -60,3 +60,4 @@ Algumas outras imagens foram encontradas por meio do Google Imagens e utilizadas
 | `--padraoExtravagancia` | `#183C62` | Elementos da identidade visual do portal |
 | `--padrao-newsletter` | `#C01A70` | Newsletter |
 | `--destaque-newsletter` | `#D88B06` | Destaques da newsletter |
+

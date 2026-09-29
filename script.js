@@ -369,7 +369,7 @@ function criarUltimasNoticias(noticias) {
         cardNot.innerHTML += ` 
         <article class="ultima-noticia-info">
 
-            <img class="img-ultima-noticia" src="${ultimaNoticia.imagem}" alt="${ultimaNoticia.alt}">>
+            <img class="img-ultima-noticia" src="${ultimaNoticia.imagem}" alt="${ultimaNoticia.alt}">
 
             <span class="categoria${ultimaNoticia.categoria.toLowerCase()}">
                 ${ultimaNoticia.categoria}

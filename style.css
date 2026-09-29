@@ -21,6 +21,10 @@
     --cultura: #B8348F;
     --opinião: #5A6472;
 
+    --padraoExtravagancia: #183c62;
+    --padrao-newsletter: #c01a70;
+    --destaque-newsletter: #d88b06;
+
     --fonteTitulo: 'Newsreader';
     --fontePadrao: 'Inter';
 
@@ -78,7 +82,7 @@ button:hover {
 #newsletter button {
     color: var(--line);
     font-size: 13px;
-    background-color: #d88b06;
+    background-color: var(--destaque-newsletter);
     border: none;
 }
 
@@ -88,7 +92,7 @@ button:hover {
 }
 
 .filtrar-noticias button:hover {
-    background-color: #183c62;
+    background-color: var(--padraoExtravagancia);
     color: var(--paper);
 }
 
@@ -162,8 +166,8 @@ button:hover {
     font-family: 'Newsreader', serif;
     color: var(--slate);
     letter-spacing: 1rem;
-    border-top: 3px solid #183c62;
-    border-bottom: 3px solid #183c62;
+    border-top: 3px solid var(--padraoExtravagancia);
+    border-bottom: 3px solid var(--padraoExtravagancia);
     padding: 10px 0px;
     width: fit-content;
     padding-left: 1rem;
@@ -189,7 +193,7 @@ button:hover {
     bottom: -5px;
     width: 0;
     height: 3px;
-    background-color: #183c62;
+    background-color: var(--padraoExtravagancia);
     transition: width 0.3s;
 }
 
@@ -233,7 +237,7 @@ button:hover {
 }
 
 .buscar-noticia:focus-within {
-    border-color: #183c62;
+    border-color: var(--padraoExtravagancia);
 }
 
 #resultados-busca {
@@ -248,13 +252,11 @@ button:hover {
     overflow-y: auto;
 }
 
-.busca-invalida{
-    color: var(--ink);
+.busca-invalida {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: var(--fontePadrao);
-    gap:0.5rem;
 }
 
 .busca-invalida img {
@@ -289,7 +291,7 @@ button:hover {
 }
 
 .img-noticia {
-    width: 100%px;
+    width: 100%;
     height: 100px;
     object-fit: cover;
     border-radius: 10px;
@@ -420,8 +422,8 @@ button:hover {
     padding: 4px;
     color: var(--ink);
     font-family: var(--fonteTitulo);
-    border-bottom: solid 2px #183c62;
-    border-top: solid 2px #183c62;
+    border-bottom: solid 2px var(--padraoExtravagancia);
+    border-top: solid 2px var(--padraoExtravagancia);
 }
 
 
@@ -525,7 +527,7 @@ button:hover {
     align-items: center;
     width: 100%;
     padding: 2rem;
-    background-color: #c01a70;
+    background-color: var(--padrao-newsletter);
     border-radius: 40px;
     gap: 1rem;
 }
@@ -542,7 +544,7 @@ button:hover {
 }
 
 #newsletter input {
-    width: 40vh;
+    width: 60%;
     background-color: var(--mist);
     font-family: var(--fontePadrao);
     border-radius: 15px;
@@ -552,7 +554,7 @@ button:hover {
 }
 
 #newsletter input:focus {
-  outline-color: #d88b06;
+  outline-color: var(--destaque-newsletter);
 }
 
 .mensagem-confirmacao {
@@ -562,7 +564,7 @@ button:hover {
     align-items: center;
     padding: 1rem;
     border-radius: 15px;
-    background-color: #d88b06;
+    background-color: var(--destaque-newsletter);
 }
 
 .mensagem-confirmacao strong {

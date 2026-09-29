@@ -192,11 +192,12 @@ const ultimasNoticias = [
     CONFIGURAÇÃO DOS EVENTOS
 ********************************/
 
-const botoesFiltro = document.querySelectorAll(".filtrar-noticias button");
+const botoesFiltro = document.querySelectorAll(".filtrar-noticias button:not(#filtrar-todas)");
 const botaoTodas = document.getElementById("filtrar-todas");
 const linksCategorias = document.querySelectorAll("nav a");
 const campoBusca = document.querySelector(".buscar-noticia input");
 const resultadosBusca = document.getElementById("resultados-busca");
+const gridResultadosBusca = document.getElementById("grid-resultados-busca");
 const formulario = document.getElementById("form-newsletter");
 const mensagem = document.getElementById("mensagem-newsletter");
 
@@ -257,13 +258,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const resultado = buscarNoticias(campoBusca.value);
 
         if (campoBusca.value.length === 0) {
-            resultadosBusca.innerHTML = "";
+            gridResultadosBusca.innerHTML = "";
             resultadosBusca.style.display = "none";
             return;
         }
 
         if (resultado.length === 0) {
-            resultadosBusca.innerHTML = `
+            gridResultadosBusca.innerHTML = `
                 <div class="busca-invalida">
                     <p>Sem resultados...</p>
                     <img src="imgs/semresultados.gif" alt="pica-pau balançando a cabeça em negação">
@@ -274,14 +275,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         } else {
 
-            resultadosBusca.innerHTML = "";
+            gridResultadosBusca.innerHTML = "";
 
             for (const noticia of resultado) {
 
-                resultadosBusca.innerHTML += `  
+                gridResultadosBusca.innerHTML += `  
                 <aside class="busca-sucedida">
 
-                    <img class="img-noticia" src="${noticia.imagem}" alt="${noticia.alt}">>
+                    <img class="img-noticia" src="${noticia.imagem}" alt="${noticia.alt}">
 
                     <span class="categoria${noticia.categoria.toLowerCase()}">
                         ${noticia.categoria}
@@ -331,6 +332,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (localStorage.getItem("modo-escuro") === "active") {
         ativarModoEscuro();
+        trocaTema.innerHTML = '<i class="bi bi-sun-fill"></i> claro';
     }
 
 });
@@ -365,9 +367,9 @@ function criarUltimasNoticias(noticias) {
 
         const cardNot = document.getElementById("grid-UL-noticias");
         cardNot.innerHTML += ` 
-        <aside class="ultima-noticia-info">
+        <article class="ultima-noticia-info">
 
-            <img class="img-ultima-noticia" src="${ultimaNoticia.imagem}">
+            <img class="img-ultima-noticia" src="${ultimaNoticia.imagem}" alt="${ultimaNoticia.alt}">>
 
             <span class="categoria${ultimaNoticia.categoria.toLowerCase()}">
                 ${ultimaNoticia.categoria}
@@ -381,7 +383,7 @@ function criarUltimasNoticias(noticias) {
                 <span class="tempo">${ultimaNoticia.tempo}</span>
             </div>
 
-        </aside>
+        </article>
     `;
 }    
 }

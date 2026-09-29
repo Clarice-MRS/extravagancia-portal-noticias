@@ -29,6 +29,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/fimdasbets.png",
+        alt: "Sombra do Presidente Lula e ao fundo a Bandeira do Brasil",
         categoria: "Política",
         manchete: "Fim das bets! Governo Lula anuncia a proibição das casas de apostas no Brasil.",
         autor: "Iris Felina",
@@ -38,6 +39,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/studioghibli.jpg",
+        alt: "logo padrão do Studio Ghibli e o personagem Totoro em fundo azul",
         categoria: "Opinião",
         manchete: "Studio Ghibli: 10 filmes que mostram por que o estúdio se tornou tão especial",
         autor: "Evelin Santos",
@@ -47,6 +49,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/videogame.jpg",
+        alt: "Controle de Videogame XBOX",
         categoria: "Tecnologia",
         manchete: "GTA VI: o que esperar do lançamento mais aguardado da Rockstar",
         autor: "Jackson Menezes",
@@ -56,8 +59,9 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/diarioapotecaria.jpg",
+        alt: "Poster do anime Diários de uma Apotecária",
         categoria: "Cultura",
-        manchete: "Maomao está de volta, lança terceira temporada de 'Diário de uma Apotecária'",
+        manchete: "Maomao está de volta, lança terceira temporada de 'Diários de uma Apotecária'",
         autor: "Gabriel Carvalho",
         data: "25 set",
         tempo: "10 min"
@@ -65,6 +69,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/gatosilvestre.jpg",
+        alt: "Felino silvestre na mata olhando para a câmera",
         categoria: "Ciência",
         manchete: "Nova espécie de felino descoberta, gato-pato do Chile",
         autor: "Eduardo Miranda",
@@ -74,6 +79,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/dadosnainternet.jpg",
+        alt: "Notebook aberta no colo de uma pessoa com suas mãos sob ele",
         categoria: "Tecnologia",
         manchete: "Pequenos descuidos podem deixar seus dados mais vulneráveis na internet",
         autor: "Monica Geller",
@@ -83,6 +89,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/sharething.jpg",
+        alt: "crianças gravando um vídeo",
         categoria: "Opinião",
         manchete: "Sharenting: quando compartilhar a infância dos filhos passa dos limites",
         autor: "Nico Canino",
@@ -92,6 +99,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/gravidasfgts.jpg",
+        alt: "Duas pessoas grávidas com as mãos sob suas barrigas",
         categoria: "Política",
         manchete: "Projeto de Erika Hilton propõe uso do FGTS para reprodução assistida",
         autor: "Alice Miranda",
@@ -101,6 +109,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/FeitoPipa.png",
+        alt: "Poster do filme Feito Pipa, menino negro olhando para o horizonte",
         categoria: "Cultura",
         manchete: "Feito Pipa será o filme que representará o Brasil no Oscar 2027",
         autor: "Alice Miranda",
@@ -110,6 +119,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/vacina.jpg",
+        alt: "Pessoa sendo vacinada, foco no braço e na agulha",
         categoria: "Ciência",
         manchete: "Vacinação contra o sarampo é reforçada após novos casos registrados",
         autor: "Mila Felina",
@@ -119,6 +129,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/urnaeletronica.png",
+        alt: "Urna eletrônica",
         categoria: "Política",
         manchete: "Primeiro voto? O que fazer no dia da votação",
         autor: "Valente Felis",
@@ -128,6 +139,7 @@ const ultimasNoticias = [
     
     {
         imagem: "imgs/tomhollandluto.png",
+        alt: "Foto do ator Tom Holland em preto e branco",
         categoria: "Cultura",
         manchete: "morre o ator Tom Holland, aos 30 anos de idade",
         autor: "Breno Santana",
@@ -137,6 +149,7 @@ const ultimasNoticias = [
     
     {
         imagem: "imgs/pennydreadful.jpg",
+        alt: "Personagens Vanessa e Ethan se abraçando e olhando um para o outro",
         categoria: "Opinião",
         manchete: "Penny Dreadful: a terceira temporada deveria ser melhor?",
         autor: "Clarice Miranda",
@@ -146,6 +159,7 @@ const ultimasNoticias = [
     
     {
         imagem: "imgs/ia.jpg",
+        alt: "lâmpada, em um fundo roxo, com um pequeno adesivo com *IA* escrito nela",
         categoria: "Tecnologia",
         manchete: "Inteligência artificial passa por novos testes e amplia suas possibilidades",
         autor: "Charles Garcia",
@@ -155,6 +169,7 @@ const ultimasNoticias = [
     
     {
         imagem: "imgs/relampagomcqueen.jpg",
+        alt: "Relâmpago Mcqueen",
         categoria: "Ciência",
         manchete: "Relâmpago Mcqueen descobre um novo combústivel.",
         autor: "Matheus Feitosa",
@@ -164,6 +179,7 @@ const ultimasNoticias = [
 
     {
         imagem: "imgs/gojonograjau.jpeg",
+        alt: "Montagem do personagem Gojo dentro do Terminal Grajaú",
         categoria: "Cultura",
         manchete: "Descubra: Gojo está vivo e morando no Grajaú",
         autor: "Joyce Gomes",
@@ -250,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function() {
             resultadosBusca.innerHTML = `
                 <div class="busca-invalida">
                     <p>Sem resultados...</p>
-                    <img src="imgs/semresultados.gif">
+                    <img src="imgs/semresultados.gif" alt="pica-pau balançando a cabeça em negação">
                 </div>
             `;
 
@@ -265,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 resultadosBusca.innerHTML += `  
                 <aside class="busca-sucedida">
 
-                    <img class="img-noticia" src="${noticia.imagem}">
+                    <img class="img-noticia" src="${noticia.imagem}" alt="${noticia.alt}">>
 
                     <span class="categoria${noticia.categoria.toLowerCase()}">
                         ${noticia.categoria}
@@ -423,7 +439,7 @@ if (formulario && mensagem) {
             <strong>Assinatura confirmada. Que extravagância!</strong>
             <p>Prepare sua caixa de entrada: as notícias mais interessantes estão a caminho.</p>
             <p>Porque informação básica nunca foi a nossa praia.</p>
-            <img src="imgs/aplausos.gif">
+            <img src="imgs/aplausos.gif" alt="pica-pau levantando um cartaz escrito *applause*">
         </div>
         `;
         

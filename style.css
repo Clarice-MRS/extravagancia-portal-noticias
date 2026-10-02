@@ -731,9 +731,8 @@ footer a {
     }
 
     .masthead h1 {
-        margin: 0 auto;
-        text-align: center;
-        width: fit-content;
+        letter-spacing: 0.3rem;
+        font-size: 28px;
     }
 
     .masthead ul {
@@ -744,20 +743,8 @@ footer a {
 
     .buscar-noticia {
         width: 100%;
-        max-width: 100%;
     }
 
-    #resultados-busca {
-        width: 100%;
-        max-width: 100%;
-        left: 0;
-        box-sizing: border-box;
-    }
-
-    #grid-resultados-busca {
-        grid-template-columns: 1fr;
-    }
-}
 
     /* HERO */
 
